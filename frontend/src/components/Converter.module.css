@@ -1,0 +1,93 @@
+.converter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.input,
+select {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0;
+  background-color: var(--primary-color);
+  font-size: 1rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select {
+  padding-right: 1rem;
+  background-color: var(--secondary-color);
+}
+
+select option {
+  background-color: var(--primary-color);
+  color: black;
+}
+
+.inputContainer1,
+.inputContainer2 {
+  display: flex;
+  width: fit-content;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.inputContainer1:focus-within {
+  box-shadow: 0 0 7px var(--quaternary-color);
+}
+
+select:focus,
+.input:focus {
+  outline: none;
+}
+
+select {
+  cursor: pointer;
+  overflow: hidden;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3); /* Color of the scrollbar handle */
+    border-radius: 4px;
+  }
+  &::-ms-overflow-style {
+    width: 8px;
+  }
+  &::-moz-scrollbar {
+    width: 8px;
+  }
+}
+
+.output {
+  cursor: default;
+  &:focus {
+    outline: none;
+  }
+}
+
+.submit {
+  border: none;
+  border-radius: 5px;
+  background-color: var(--tertiary-color);
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  width: 45%;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: var(--quaternary-color);
+  }
+}
