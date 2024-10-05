@@ -17,4 +17,4 @@ RUN javac -d bin -cp "libs/*" src/*.java
 EXPOSE 8080
 
 # Command to run your Java application
-CMD ["java", "-cp", "bin:libs/*", "src.Main"]
+CMD ["java", "-cp", "bin:libs/*", "Main"]
