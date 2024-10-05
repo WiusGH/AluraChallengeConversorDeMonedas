@@ -4,8 +4,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Solicitud {
     public String solicitud(String monedaOrigen) {
@@ -19,11 +17,10 @@ public class Solicitud {
                     .build();
             HttpResponse<String> response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
-
-            String json = response.body();
-            return json;
+            return response.body();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+            System.out.println("Error al realizar la solicitud.");
             return null;
         }
     }
