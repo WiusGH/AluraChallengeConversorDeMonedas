@@ -7,16 +7,19 @@ import java.net.http.HttpResponse;
 
 public class Solicitud {
     public String solicitud(String monedaOrigen) {
+        // Inicializar variables necesarias para la solicitud de la API
         final String APIKEY = "0356dbdf0d2bac7603c47bd9";
         final String URL = "https://v6.exchangerate-api.com/v6/" + APIKEY + "/latest/" + monedaOrigen;
 
         try {
+            // Instanciar un nuevo cliente y una nueva solicitud
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(URL))
                     .build();
             HttpResponse<String> response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
+            // Retorna el body de la respuesta
             return response.body();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
