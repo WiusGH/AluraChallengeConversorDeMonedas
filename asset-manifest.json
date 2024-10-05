@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/AluraChallengeConversorDeMonedas/static/css/main.e3acd100.css",
+    "main.js": "/AluraChallengeConversorDeMonedas/static/js/main.746047a8.js",
+    "static/media/alura.svg": "/AluraChallengeConversorDeMonedas/static/media/alura.57b0b041d5b62f5cb4a158904d11160a.svg",
+    "index.html": "/AluraChallengeConversorDeMonedas/index.html",
+    "main.e3acd100.css.map": "/AluraChallengeConversorDeMonedas/static/css/main.e3acd100.css.map",
+    "main.746047a8.js.map": "/AluraChallengeConversorDeMonedas/static/js/main.746047a8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e3acd100.css",
+    "static/js/main.746047a8.js"
+  ]
+}
