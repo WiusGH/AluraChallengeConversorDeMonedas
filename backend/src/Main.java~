@@ -12,6 +12,8 @@ import org.json.JSONObject;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        String APIKEY = "0356dbdf0d2bac7603c47bd9";
+        String URL = "https://v6.exchangerate-api.com/v6/" + APIKEY + "/latest/USD";
         HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
         System.out.println("Server started at port 8000...");
 
