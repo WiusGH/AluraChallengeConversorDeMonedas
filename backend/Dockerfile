@@ -6,7 +6,6 @@ WORKDIR /app
 
 # Copy your source code into the container
 COPY src /app/src
-COPY bin /app/bin
 
 # Compile your Java code (if needed)
 RUN javac -d bin src/*.java
