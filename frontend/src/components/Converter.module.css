@@ -12,6 +12,47 @@
   }
 }
 
+.error {
+  background-color: rgb(252, 55, 85);
+  color: white;
+  font-size: 1rem;
+  position: fixed;
+  text-align: center;
+  top: 15px;
+  width: 100%;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 1%;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 30%;
+  @media (max-width: 768px) {
+    width: 75%;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+  span {
+    font-size: 2rem;
+  }
+}
+
+.loading > h4 {
+  font-size: 3rem;
+}
+
 .input,
 select {
   padding: 0.5rem;
