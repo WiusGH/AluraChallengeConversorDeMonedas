@@ -17,6 +17,8 @@ Solo basta con abrir el enlace y comenzar a usar la app: https://wiusgh.github.i
 
 #### **Características**
 - **Interfaz sencilla y responsiva**.
+- El **frontend** está desplegado en Github utilizando Github Pages.
+- El **backend** está desplegado en Render utilizando Docker.
 - Un **select** para seleccionar la divisa de origen.
 - Un **select** para seleccionar la divisa de destino.
 - Un **input** para ingresar el monto a convertir.
