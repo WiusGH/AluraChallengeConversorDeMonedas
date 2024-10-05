@@ -1,36 +1,10 @@
 import { useState } from "react";
+import axios from "axios";
 import style from "./Converter.module.css";
 
-interface Currencies {
-  USD: string;
-  EUR: string;
-  ARS: string;
-  CLP: string;
-  MXN: string;
-  COP: string;
-  GBP: string;
-  JPY: string;
-  CNY: string;
-  AUD: string;
-  CAD: string;
-  CHF: string;
-  INR: string;
-  RUB: string;
-  BRL: string;
-  ZAR: string;
-  HKD: string;
-  SGD: string;
-  NZD: string;
-  KRW: string;
-  SEK: string;
-  NOK: string;
-  TRY: string;
-}
-
 const Converter = () => {
-  const [firstValue, setFirstValue] = useState((0.0).toPrecision(3));
   const [firstCurrency, setFirstCurrency] = useState("EUR");
-  const [secondValue, setSecondValue] = useState((0.0).toPrecision(3));
+  const [result, setResult] = useState((0.0).toPrecision(3));
   const [secondCurrency, setSecondCurrency] = useState("USD");
   const currencies: { [key: string]: string } = {
     USD: "$",
@@ -39,6 +13,7 @@ const Converter = () => {
     CLP: "$",
     MXN: "MX$",
     COP: "$",
+    BRL: "R$",
     GBP: "£",
     JPY: "¥",
     CNY: "¥",
@@ -47,7 +22,6 @@ const Converter = () => {
     CHF: "CHF",
     INR: "₹",
     RUB: "₽",
-    BRL: "R$",
     ZAR: "R",
     HKD: "HK$",
     SGD: "S$",
@@ -70,16 +44,24 @@ const Converter = () => {
     setSecondCurrency(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const form = e.target as HTMLFormElement;
-    const firstInputValue = (form.elements[0] as HTMLInputElement).value;
-    const secondInputValue = (form.elements[2] as HTMLInputElement).value;
+    const inputValue = (form.elements[0] as HTMLInputElement).value;
 
-    setFirstValue(firstInputValue);
-    setSecondValue(secondInputValue);
-    console.log(firstValue, firstCurrency, secondValue, secondCurrency);
+    try {
+      const response = await axios.post("http://localhost:8000/convert", {
+        fromCurrency: firstCurrency,
+        toCurrency: secondCurrency,
+        amount: inputValue,
+      });
+
+      console.log(response.data.convertedAmount.toFixed(2));
+      setResult(response.data.convertedAmount.toFixed(2));
+    } catch (error) {
+      console.error("Error in Axios request:", error);
+    }
   };
 
   return (
@@ -104,7 +86,7 @@ const Converter = () => {
             className={style.input + " " + style.output}
             type="text"
             readOnly
-            placeholder={currencies[secondCurrency]}
+            value={currencies[secondCurrency] + " " + result}
           />
           <select value={secondCurrency} onChange={handleSecondCurrencyChange}>
             {Object.keys(currencies).map((currency) => (

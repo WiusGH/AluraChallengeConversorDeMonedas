@@ -78,9 +78,10 @@ select {
 }
 
 .submit {
+  background-color: var(--tertiary-color);
   border: none;
   border-radius: 5px;
-  background-color: var(--tertiary-color);
+  box-shadow: -3px 3px 0 rgba(0, 0, 0, 1);
   color: white;
   cursor: pointer;
   font-size: 1rem;
@@ -89,5 +90,9 @@ select {
   transition: background-color 0.3s ease;
   &:hover {
     background-color: var(--quaternary-color);
+  }
+  &:active {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    translate: -3px 3px;
   }
 }
