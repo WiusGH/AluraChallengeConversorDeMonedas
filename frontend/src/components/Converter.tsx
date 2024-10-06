@@ -4,6 +4,7 @@ import style from "./Converter.module.css";
 import { FaRegGrinWink } from "react-icons/fa";
 
 const Converter = () => {
+  // Agregar variables para manipular el estado y enviar datos a la API
   const [value, setValue] = useState("");
   const [firstCurrency, setFirstCurrency] = useState("EUR");
   const [result, setResult] = useState((0.0).toPrecision(3));
@@ -11,6 +12,7 @@ const Converter = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const regEx = /^[0-9]*\.?[0-9]*$/;
+  // Lista de las divisas más comunes y sus símbolos
   const currencies: { [key: string]: string } = {
     USD: "$",
     EUR: "€",
@@ -67,6 +69,7 @@ const Converter = () => {
     JOD: "د.ا",
   };
 
+  // Función para solo permitir valores numéricos y un punto
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     if (regEx.test(inputValue)) {
@@ -80,6 +83,7 @@ const Converter = () => {
     }
   };
 
+  // Funciones para cambiar el símbolo de las divisas
   const handleFirstCurrencyChange = (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
@@ -94,6 +98,7 @@ const Converter = () => {
     setSecondCurrency(e.target.value);
   };
 
+  // Funcion que envía información a la API para hacer la conversión
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (value === "" || isValueZero(value)) {
@@ -128,6 +133,7 @@ const Converter = () => {
     }
   };
 
+  // Función para verificar si el valor es cero
   const isValueZero = (value: string) => {
     for (let i = 0; i < value.length; i++) {
       if (value[i] !== "0" && value[i] !== ".") {
@@ -139,6 +145,7 @@ const Converter = () => {
 
   return (
     <div className={style.converter}>
+      {/* Muestra mensaje mientras se realiza la solicitud a la API */}
       {error && (
         <div className={style.error}>
           <p>{error}</p>
