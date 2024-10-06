@@ -10,33 +10,61 @@ const Converter = () => {
   const [secondCurrency, setSecondCurrency] = useState("USD");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  // Create a reges that detects if a value has numbers from 1 to 9
-  const numbersRegEx = /^(?!0)\d+$/;
   const regEx = /^[0-9]*\.?[0-9]*$/;
   const currencies: { [key: string]: string } = {
     USD: "$",
     EUR: "€",
-    ARS: "$",
-    CLP: "$",
-    MXN: "MX$",
-    COP: "$",
-    BRL: "R$",
     GBP: "£",
+    ARS: "$",
+    BOB: "Bs",
+    BRL: "R$",
+    CLP: "$",
+    COP: "$",
+    CRC: "₡",
+    CUP: "₱",
+    DOP: "RD$",
+    PEN: "S/",
+    VEF: "Bs",
+    GTQ: "Q",
+    HNL: "L",
+    MXN: "$",
+    NIO: "C$",
+    PAB: "B/.",
+    PYG: "₲",
+    UYU: "$U",
+    VES: "Bs",
     JPY: "¥",
-    CNY: "¥",
     AUD: "A$",
     CAD: "C$",
+    CNY: "¥",
     CHF: "CHF",
     INR: "₹",
     RUB: "₽",
     ZAR: "R",
+    KRW: "₩",
     HKD: "HK$",
     SGD: "S$",
     NZD: "NZ$",
-    KRW: "₩",
     SEK: "kr",
     NOK: "kr",
+    DKK: "kr",
+    PLN: "zł",
     TRY: "₺",
+    HUF: "Ft",
+    IDR: "Rp",
+    ILS: "₪",
+    MYR: "RM",
+    THB: "฿",
+    PHP: "₱",
+    CZK: "Kč",
+    VND: "₫",
+    EGP: "£",
+    SAR: "﷼",
+    NGN: "₦",
+    KWD: "د.ك",
+    AED: "د.إ",
+    QAR: "﷼",
+    JOD: "د.ا",
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +96,7 @@ const Converter = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!numbersRegEx.test(value)) {
+    if (value === "" || isValueZero(value)) {
       setError("Ingresa un valor");
       return;
     } else {
@@ -98,6 +126,15 @@ const Converter = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const isValueZero = (value: string) => {
+    for (let i = 0; i < value.length; i++) {
+      if (value[i] !== "0" && value[i] !== ".") {
+        return false;
+      }
+    }
+    return true;
   };
 
   return (
