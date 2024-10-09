@@ -35,7 +35,7 @@ public class Main {
                     (CLP) Peso chileno
                     (PEN) Sol peruano
                     (JPY) Yen japonés
-                    (KRW) Won sul-coreano
+                    (KRW) Won sur-coreano
                     (CNY) Yuan chino
                     
                     Ingresa la divisa de origen:
@@ -57,16 +57,19 @@ public class Main {
             while (true) {
                 try {
                     System.out.println("Ingresa el monto que quieres convertir: ");
-                    monto = scanner.nextDouble();
-                    scanner.nextLine();
+                    String montoString = scanner.nextLine();
+                    if (montoString.equalsIgnoreCase("SALIR")) {
+                        System.out.println("¡Hasta luego! Gracias por usar mi conversor de divisas.");
+                        break outerLoop;
+                    }
+                    monto = Double.parseDouble(montoString);
                     if (monto > 0) {
                         break;
                     } else {
                         System.out.println("Ingresa un monto positivo");
                     }
-                } catch (InputMismatchException e) {
+                } catch (NumberFormatException e) {
                     System.out.println("Ingresa un valor numérico");
-                    scanner.next();
                 }
             }
             while (true) {
