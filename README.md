@@ -42,7 +42,7 @@ Es necesario descargar el repositorio, abrir la carpeta **"challenge-de-alura"**
 - **Manejo de errores** para validar:
   - Cada valor solicitado antes de continuar.
   - Evitar errores por valores erróneos o inexistentes.
-- Permite salir escribiendo **"salir"** en casi todas las secciones del menú.
+- Permite salir escribiendo **"salir"** desde cualquier parte del menú.
 - Convierte los valores ingresados a mayúsculas o minúsculas según sea necesario para evitar errores.
 
 ---
